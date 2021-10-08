@@ -1,5 +1,7 @@
 package com.boarding_pass.project.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 
 @Entity
@@ -96,7 +98,21 @@ public class User {
         return boardingPass;
     }
 
+    @Autowired
     public void setBoardingPass(BoardingPass boardingPass) {
         this.boardingPass = boardingPass;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", gender=" + gender +
+                ", age=" + age +
+                ", boardingPass=" + boardingPass +
+                '}';
     }
 }

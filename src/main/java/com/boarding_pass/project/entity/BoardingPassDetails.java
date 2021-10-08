@@ -2,6 +2,7 @@ package com.boarding_pass.project.entity;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "boarding_pass_details")
@@ -19,12 +20,19 @@ public class BoardingPassDetails {
     private String destination;
 
     @Column(name = "eta")
-    private SimpleDateFormat estimatedTimeOfArrival;
+    private Date estimatedTimeOfArrival;
 
     @Column(name = "departure_time")
-    private SimpleDateFormat departureTime;
+    private Date departureTime;
 
-    public BoardingPassDetails(int id) {
+    public BoardingPassDetails() {
+    }
+
+    public BoardingPassDetails(String origin, String destination, Date estimatedTimeOfArrival, Date departureTime) {
+        this.origin = origin;
+        this.destination = destination;
+        this.estimatedTimeOfArrival = estimatedTimeOfArrival;
+        this.departureTime = departureTime;
     }
 
     public int getId() {
@@ -51,19 +59,19 @@ public class BoardingPassDetails {
         this.destination = destination;
     }
 
-    public SimpleDateFormat getEstimatedTimeOfArrival() {
+    public Date getEstimatedTimeOfArrival() {
         return estimatedTimeOfArrival;
     }
 
-    public void setEstimatedTimeOfArrival(SimpleDateFormat estimatedTimeOfArrival) {
+    public void setEstimatedTimeOfArrival(Date estimatedTimeOfArrival) {
         this.estimatedTimeOfArrival = estimatedTimeOfArrival;
     }
 
-    public SimpleDateFormat getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(SimpleDateFormat departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 }

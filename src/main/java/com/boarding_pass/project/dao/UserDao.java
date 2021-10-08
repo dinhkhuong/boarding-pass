@@ -4,11 +4,11 @@ import com.boarding_pass.project.entity.User;
 
 public interface UserDao {
 
-    public void addUser();
+    public void addUser(User user);
 
-    public User getUserById();
+    public User getUserById(int id);
 
-    public void deleteUserById();
+    public void deleteUserById(int id);
 
-    public void updateUser();
+    public void updateUser(User user, int id);
 }

@@ -8,16 +8,21 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 
 @Repository
-public class UserDaoImpl {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private Session session;
 
+    public UserDaoImpl() {
+    }
+
+    @Override
     @Transactional
     public void addUser(User user){
         session.save(user);
     }
 
+    @Override
     @Transactional
     public User getUserById(int id){
         User user = session.get(User.class, id );
@@ -27,6 +32,7 @@ public class UserDaoImpl {
         return user;
     }
 
+    @Override
     @Transactional
     public void deleteUserById(int id){
         User user = getUserById(id);
@@ -36,6 +42,7 @@ public class UserDaoImpl {
         System.out.println("Confirmation of deleted user with id - " + id);
     }
 
+    @Override
     @Transactional
     public void updateUser(User user, int id){
         User u = getUserById(id);

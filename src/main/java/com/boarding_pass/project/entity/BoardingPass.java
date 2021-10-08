@@ -1,6 +1,7 @@
 package com.boarding_pass.project.entity;
 
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,7 +26,7 @@ public class BoardingPass {
     @JoinColumn(name = "boardingPassDetails_id")
     private BoardingPassDetails boardingPassDetails;
 
-    public BoardingPass(int id) {
+    public BoardingPass() {
     }
 
     public BoardingPass(long boardingPassNumber) {
@@ -60,7 +61,18 @@ public class BoardingPass {
         return boardingPassDetails;
     }
 
+    @Autowired
     public void setBoardingPassDetails(BoardingPassDetails boardingPassDetails) {
         this.boardingPassDetails = boardingPassDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "BoardingPass{" +
+                "id=" + id +
+                ", boardingPassNumber=" + boardingPassNumber +
+                ", date=" + date +
+                ", boardingPassDetails=" + boardingPassDetails +
+                '}';
     }
 }
