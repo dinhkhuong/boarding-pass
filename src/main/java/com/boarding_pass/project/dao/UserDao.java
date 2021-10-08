@@ -4,7 +4,7 @@ import com.boarding_pass.project.entity.User;
 
 public interface UserDao {
 
-    public void writeUser();
+    public void addUser();
 
     public User getUserById();
 

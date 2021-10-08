@@ -1,22 +1,49 @@
 package com.boarding_pass.project.dao;
 
 import com.boarding_pass.project.entity.User;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+
+@Repository
 public class UserDaoImpl {
 
-    public void writeUser(){
+    @Autowired
+    private Session session;
 
+    @Transactional
+    public void addUser(User user){
+        session.save(user);
     }
 
+    @Transactional
     public User getUserById(int id){
-        return null;
+        User user = session.get(User.class, id );
+        if(user == null){
+            throw new RuntimeException("There is no user with the id - " + id);
+        }
+        return user;
     }
 
+    @Transactional
     public void deleteUserById(int id){
-
+        User user = getUserById(id);
+        if(user != null){
+            session.delete(user);
+        }
+        System.out.println("Confirmation of deleted user with id - " + id);
     }
 
-    public void updateUser(int id){
-
+    @Transactional
+    public void updateUser(User user, int id){
+        User u = getUserById(id);
+        if(u == null){
+            throw new RuntimeException("There is no user with the id - " + id);
+        }
+        u = user;
+        session.saveOrUpdate(u);
+        System.out.println("User " + u.getName() + " has been updated");
     }
 }

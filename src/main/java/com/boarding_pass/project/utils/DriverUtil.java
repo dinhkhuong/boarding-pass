@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class DriverUtil {
 
     @Bean
-    public Session getSession() throws HibernateException {
+    public static Session getSession() throws HibernateException {
         SessionFactory sessionFactory = new Configuration()
                 .configure("Hibernate.cfg.xml")
                 .addAnnotatedClass(User.class)
