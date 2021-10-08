@@ -20,11 +20,12 @@ public class Main {
 
         System.out.println(userDao.getUserById(1));
 
-        user.setName("NameUpdated");
-        user.setEmail("emailUpdated");
-        user.setPhoneNumber(987654321);
-        user.setGender('F');
-        userDao.updateUser(user, 1);
+        User user2 = userDao.getUserById(1);
+        user2.setName("NameUpdated");
+        user2.setEmail("emailUpdated");
+        user2.setPhoneNumber(987654321);
+        user2.setGender('F');
+        userDao.updateUser(user2, 1);
         System.out.println(userDao.getUserById(1));
         //userDao.deleteUserById(1);
     }
