@@ -13,6 +13,14 @@ public class User {
     @Column(name = "Name")
     private String name;
 
+    private String email;
+    private long phoneNumber;
+    private char gender;
+    private int age;
+
+
+    private BoardingPass boardingPass;
+
     public User(){}
     public User(String toName){
         this.name = toName;
