@@ -1,5 +1,7 @@
 package com.boarding_pass.project.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class BoardingPass {
     private long boardingPassNumber;
 
     @Column(name = "date_added")
+    @UpdateTimestamp
     private Date date;
 
     @OneToOne(cascade = CascadeType.ALL)
