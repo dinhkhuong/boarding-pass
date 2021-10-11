@@ -1,7 +1,6 @@
 package com.boarding_pass.project.utils;
 
-import com.boarding_pass.project.dao.UserDao;
-import com.boarding_pass.project.dao.UserDaoImpl;
+
 import com.boarding_pass.project.entity.BoardingPass;
 import com.boarding_pass.project.entity.BoardingPassDetails;
 import com.boarding_pass.project.entity.User;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 @org.springframework.context.annotation.Configuration
 @ComponentScan(basePackages = "com.boarding_pass.project")
@@ -31,15 +30,16 @@ public class DriverUtil {
 
         return sessionFactory.openSession();
     }
+
     @Bean
     public User getUser(){
         return new User();
     }
-    /*
-    @Bean
+
+    /*@Bean
     public User getUser(){
         return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
-    }
+    }*/
 
     /*@Bean
     public UserDao getUserDao(){
@@ -57,4 +57,6 @@ public class DriverUtil {
 
         return new BoardingPassDetails("California", "North Carolina", formatter.parse("1:45 AM"), formatter.parse("12:0 PM"));
     }
+
+
 }
