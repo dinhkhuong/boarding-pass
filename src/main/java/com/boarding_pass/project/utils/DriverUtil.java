@@ -31,7 +31,11 @@ public class DriverUtil {
 
         return sessionFactory.openSession();
     }
-
+    @Bean
+    public User getUser(){
+        return new User();
+    }
+    /*
     @Bean
     public User getUser(){
         return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
