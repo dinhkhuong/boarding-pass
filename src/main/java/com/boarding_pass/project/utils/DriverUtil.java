@@ -35,11 +35,13 @@ public class DriverUtil {
 
     @Bean
     public User getUser(){
+
         return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
     }
 
     @Bean
     public BoardingPass getBoardingPass(){
+
         return new BoardingPass(1);
     }
 
