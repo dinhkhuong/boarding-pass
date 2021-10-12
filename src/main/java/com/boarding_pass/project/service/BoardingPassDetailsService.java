@@ -1,10 +1,11 @@
-package com.boarding_pass.project.dao;
+package com.boarding_pass.project.service;
 
+import com.boarding_pass.project.entity.BoardingPass;
 import com.boarding_pass.project.entity.BoardingPassDetails;
 
 import java.util.List;
 
-public interface BoardingPassDetailsDao {
+public interface BoardingPassDetailsService {
 
     public List<BoardingPassDetails> listBoardingPassDetails();
 
@@ -15,4 +16,5 @@ public interface BoardingPassDetailsDao {
     public void deleteBoardingPassDetailsById(int id);
 
     public void updateBoardingPassDetails(BoardingPassDetails boardingPassDetails, int id);
+
 }

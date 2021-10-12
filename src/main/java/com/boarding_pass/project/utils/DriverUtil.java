@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//Config class for beans and setting base package for scanning
 @org.springframework.context.annotation.Configuration
 @ComponentScan(basePackages = "com.boarding_pass.project")
 public class DriverUtil {
@@ -36,11 +37,6 @@ public class DriverUtil {
     public User getUser(){
         return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
     }
-
-    /*@Bean
-    public UserDao getUserDao(){
-        return new UserDaoImpl();
-    }*/
 
     @Bean
     public BoardingPass getBoardingPass(){

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
 
+    //testing userDao operations
     public static void main(String[] args) {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(DriverUtil.class);
@@ -27,6 +28,8 @@ public class Main {
         user2.setGender('F');
         userDao.updateUser(user2, 1);
         System.out.println(userDao.getUserById(1));
+
+        System.out.println(userDao.listUsers());
         //userDao.deleteUserById(1);
     }
 }

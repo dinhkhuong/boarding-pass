@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
+//stereotype for repo, enables componentScan and allows spring to handle exception translation
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -14,6 +16,14 @@ public class UserDaoImpl implements UserDao {
     private Session session;
 
     public UserDaoImpl() {
+    }
+
+    //letting spring start and stop CRUD operations with @Transactional
+    //method names are self-explanatory
+    @Override
+    @Transactional
+    public List<User> listUsers(){
+        return (List<User>) session.createQuery("from User").getResultList();
     }
 
     @Override

@@ -1,10 +1,10 @@
-package com.boarding_pass.project.dao;
+package com.boarding_pass.project.service;
 
 import com.boarding_pass.project.entity.BoardingPass;
 
 import java.util.List;
 
-public interface BoardingPassDao {
+public interface BoardingPassService {
 
     public List<BoardingPass> listBoardingPass();
 

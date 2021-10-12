@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 import java.util.Date;
 
+//this class is mapped to a table in the database
 @Entity
 @Table(name = "boarding_pass")
 public class BoardingPass {
 
+    //the fields below are mapped to columns in the database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "boardingPass_id")
@@ -22,10 +24,12 @@ public class BoardingPass {
     @UpdateTimestamp
     private Date date;
 
+    //foreign key column with boardingPassDetails_id
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "boardingPassDetails_id")
     private BoardingPassDetails boardingPassDetails;
 
+    //constructor section
     public BoardingPass() {
     }
 
@@ -33,6 +37,7 @@ public class BoardingPass {
         this.boardingPassNumber = boardingPassNumber;
     }
 
+    //getters and setters
     public int getId() {
         return id;
     }
@@ -66,6 +71,7 @@ public class BoardingPass {
         this.boardingPassDetails = boardingPassDetails;
     }
 
+    //override the toString() method
     @Override
     public String toString() {
         return "BoardingPass{" +

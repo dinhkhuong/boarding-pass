@@ -13,7 +13,10 @@
         <!-- Select our SQL dialect -->
          <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
+        <!-- Show our SQL queries -->
         <property name="hibernate.show_sql">true</property>
+
+        <!-- Select our Hibernate SQL hbm2ddl.auto schema generation mode -->
         <property name="hbm2ddl.auto">update</property>
 
     </session-factory>

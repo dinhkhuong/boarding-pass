@@ -1,13 +1,14 @@
 package com.boarding_pass.project.entity;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//this class is mapped to a table in the database
 @Entity
 @Table(name = "boarding_pass_details")
 public class BoardingPassDetails {
 
+    //the fields below are mapped to columns in the database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,6 +26,7 @@ public class BoardingPassDetails {
     @Column(name = "departure_time")
     private Date departureTime;
 
+    //constructor section
     public BoardingPassDetails() {
     }
 
@@ -35,6 +37,7 @@ public class BoardingPassDetails {
         this.departureTime = departureTime;
     }
 
+    //getters and setters
     public int getId() {
         return id;
     }
@@ -73,5 +76,17 @@ public class BoardingPassDetails {
 
     public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
+    }
+
+    //override the toString() method
+    @Override
+    public String toString() {
+        return "BoardingPassDetails{" +
+                "id=" + id +
+                ", origin='" + origin + '\'' +
+                ", destination='" + destination + '\'' +
+                ", estimatedTimeOfArrival=" + estimatedTimeOfArrival +
+                ", departureTime=" + departureTime +
+                '}';
     }
 }

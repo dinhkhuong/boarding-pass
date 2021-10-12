@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
+//this class is mapped to a table in the database
 @Entity
 @Table(name = "user")
 public class User {
+
+    //the fields below are mapped to columns in the database
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
@@ -27,10 +30,12 @@ public class User {
     @Column(name = "age")
     private int age;
 
+    //foreign key column with boardingPass_id
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "boardingPass_id")
     private BoardingPass boardingPass;
 
+    //constructor section
     public User(){
     }
 
@@ -46,6 +51,7 @@ public class User {
         this.age = age;
     }
 
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -103,6 +109,7 @@ public class User {
         this.boardingPass = boardingPass;
     }
 
+    //override the toString() method
     @Override
     public String toString() {
         return "User{" +
@@ -113,6 +120,6 @@ public class User {
                 ", gender=" + gender +
                 ", age=" + age +
                 ", boardingPass=" + boardingPass +
-                '}';
+                "'}'\n";
     }
 }
