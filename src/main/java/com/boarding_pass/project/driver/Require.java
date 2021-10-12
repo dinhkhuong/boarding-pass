@@ -6,10 +6,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Require {
     HashMap<String, Integer> duration = new HashMap<String, Integer>();
+    Calendar time = Calendar.getInstance();
 
     {
         duration.put("Alabama", 54);
@@ -62,16 +65,21 @@ public class Require {
         duration.put("Wisconsin", 163);
         duration.put("Wyoming", 196);
     }
-    public int eTA(String destination, int depart) {
 
 
-        int arrive= 0;
-        for(String plc: duration.keySet()){
-            if(destination.equals(plc)){
-                arrive =  depart + duration.get(destination);
-            }
+    public Require(String name, String email, String destination, long phoneNo, char gender, int age,int month, int day, int hour){
+        this.time.set(2021,month,day,hour,0);
+    }
+
+    public Calendar eTA(String destination) {
+        try{
+            this.time.add(Calendar.MINUTE,duration.get(destination));
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return arrive;
+
+
+        return time;
     }
 
 
