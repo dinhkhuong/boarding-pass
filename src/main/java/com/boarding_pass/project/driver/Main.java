@@ -1,42 +1,50 @@
 package com.boarding_pass.project.driver;
 
+import com.boarding_pass.project.dao.BoardingPassDaoImpl;
+import com.boarding_pass.project.dao.UserDao;
+import com.boarding_pass.project.dao.UserDaoImpl;
+import com.boarding_pass.project.dao.BoardingPassDao;
+import com.boarding_pass.project.dao.BoardingPassDaoImpl;
+import com.boarding_pass.project.entity.BoardingPass;
+import com.boarding_pass.project.entity.BoardingPassDetails;
 import com.boarding_pass.project.entity.User;
-import com.boarding_pass.project.service.UserService;
-import com.boarding_pass.project.service.UserServiceImpl;
 import com.boarding_pass.project.utils.DriverUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-//Collaborators Khoung, Matthew, James
+import java.util.Calendar;
 
 public class Main {
 
-    //testing userDao operations
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        Input in = new Input();
 
         ApplicationContext context = new AnnotationConfigApplicationContext(DriverUtil.class);
+        User user = context.getBean(User.class);
 
-        UserService userService = context.getBean(UserServiceImpl.class);
+        user.setName(in.getName());
+        user.setEmail(in.getEmail());
+        user.setPhoneNumber(in.getPhoneNumber());
+        user.setGender(in.getGender());
+        user.setAge(in.getAge());
 
-        User user2 = userService.getUserById(7);
-        System.out.println(user2);
-        user2.setName("James");
-        user2.setEmail("james@james.com");
-        user2.setPhoneNumber(54765735);
-        user2.setGender('M');
+        UserDao userDao = context.getBean(UserDaoImpl.class);
 
-        //Serves as examples to use the database
-        userService.updateUser(user2, 7);
+        userDao.addUser(user);
 
-//        userService.addUser(user2);
+        Require req = new Require(in);
 
-//        userService.listUsers();
-//
-//        System.out.println(userService.getUserById(7));
-//
-//        userService.deleteUserById(7);
-//
-//        System.out.println(userService.listUsers());
+        //Calendar arrive = req.eTA();
 
+        System.out.println("You have purchased a boarding pass to " + in.getDestination() +
+                " and the departure at "+req.getTime().getTime());
+        System.out.println("Your price is: $" + req.priceCal());
+        System.out.println("Your ticket number is: " + req.getBoardNumber());
+        System.out.println("The estimated arrival time for this journey is: "+ req.eTA().getTime());
+
+        req.putInFile();
+
+        System.out.println(userDao.getUserById(6));
     }
 }
