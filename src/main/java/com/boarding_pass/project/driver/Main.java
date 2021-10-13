@@ -16,19 +16,35 @@ import java.util.Calendar;
 
 public class Main {
 
-    public static void main(String[] args)throws NullPointerException {
+    public static void main(String[] args) throws InterruptedException {
 
         Input in = new Input();
 
-        Require req = new Require(
-                in.getName(),in.getEmail(),in.getDestination(),
-                in.getPhoneNumber(),in.getGender(),in.getAge(),
-                in.getMonth(),in.getDay(),in.getHour());
-        Calendar arrive = req.eTA(in.getDestination());
-        System.out.println(arrive.getTime());
-        System.out.println(arrive.get(Calendar.MONTH));
-        System.out.println(arrive.get(Calendar.DAY_OF_MONTH));
-        System.out.println(arrive.get(Calendar.HOUR_OF_DAY));
-        System.out.println(arrive.get(Calendar.MINUTE));
+        ApplicationContext context = new AnnotationConfigApplicationContext(DriverUtil.class);
+        User user = context.getBean(User.class);
+
+        user.setName(in.getName());
+        user.setEmail(in.getEmail());
+        user.setPhoneNumber(in.getPhoneNumber());
+        user.setGender(in.getGender());
+        user.setAge(in.getAge());
+
+        UserDao userDao = context.getBean(UserDaoImpl.class);
+
+        userDao.addUser(user);
+
+        Require req = new Require(in);
+
+        //Calendar arrive = req.eTA();
+
+        System.out.println("You have purchased a boarding pass to " + in.getDestination() +
+                " and the departure at "+req.getTime().getTime());
+        System.out.println("Your price is: $" + req.priceCal());
+        System.out.println("Your ticket number is: " + req.getBoardNumber());
+        System.out.println("The estimated arrival time for this journey is: "+ req.eTA().getTime());
+
+        req.putInFile();
+
+        System.out.println(userDao.getUserById(1));
     }
 }
