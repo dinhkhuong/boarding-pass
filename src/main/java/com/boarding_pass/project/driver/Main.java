@@ -45,6 +45,6 @@ public class Main {
 
         req.putInFile();
 
-        System.out.println(userDao.getUserById(1));
+        System.out.println(userDao.getUserById(6));
     }
 }

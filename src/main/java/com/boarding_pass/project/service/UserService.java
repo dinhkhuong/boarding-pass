@@ -1,10 +1,11 @@
-package com.boarding_pass.project.dao;
+package com.boarding_pass.project.service;
 
 import com.boarding_pass.project.entity.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserService {
+
     public List<User> listUsers();
 
     public void addUser(User user);

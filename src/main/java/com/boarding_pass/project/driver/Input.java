@@ -70,8 +70,7 @@ class Input
         hour = (int)inputLong(0, 23);
     }
 
-    private String inputString()
-    {
+    private String inputString()  {
         String s = "Not initialized";
         try
         {
@@ -79,7 +78,10 @@ class Input
         }
         catch(NoSuchElementException e)
         {
-            System.out.println("NoSuchElementException");
+            System.out.println("Exit the program");
+
+
+            System.exit(0);
         }
         catch(IllegalStateException e)
         {
@@ -92,8 +94,7 @@ class Input
         return s;
     }
 
-    private long inputLong(long min, long max)
-    {
+    private long inputLong(long min, long max)  {
         long l = -1;
         boolean isInvalid = true;
         while(isInvalid)
@@ -117,7 +118,10 @@ class Input
             }
             catch(NoSuchElementException e)
             {
-                System.out.println("NoSuchElementException");
+                System.out.println("Exit the program");
+
+
+                System.exit(0);
             }
             catch(IllegalStateException e)
             {
