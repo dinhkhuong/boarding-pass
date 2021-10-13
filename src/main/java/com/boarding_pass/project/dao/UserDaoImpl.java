@@ -23,19 +23,26 @@ public class UserDaoImpl implements UserDao {
     @Override
     @Transactional
     public List<User> listUsers(){
-        return (List<User>) session.createQuery("from User").getResultList();
+        session.beginTransaction();
+        List<User> list = (List<User>) session.createQuery("from User").getResultList();
+        session.getTransaction().commit();
+        return list;
     }
 
     @Override
     @Transactional
     public void addUser(User user){
-        session.save(user);
+        session.beginTransaction();
+        session.saveOrUpdate("User", user);
+        session.getTransaction().commit();
     }
 
     @Override
     @Transactional
     public User getUserById(int id){
+        session.beginTransaction();
         User user = session.get(User.class, id );
+        session.getTransaction().commit();
         if(user == null){
             throw new RuntimeException("There is no user with the id - " + id);
         }
@@ -47,20 +54,23 @@ public class UserDaoImpl implements UserDao {
     public void deleteUserById(int id){
         User user = getUserById(id);
         if(user != null){
+            session.getTransaction();
             session.delete(user);
+            session.getTransaction().commit();
         }
         System.out.println("Confirmation of deleted user with id - " + id);
     }
 
     @Override
-    @Transactional
     public void updateUser(User user, int id){
         User u = getUserById(id);
         if(u == null){
             throw new RuntimeException("There is no user with the id - " + id);
         }
         u = user;
+        session.beginTransaction();
         session.saveOrUpdate(u);
+        session.getTransaction().commit();
         System.out.println("User " + u.getName() + " has been updated");
     }
 }

@@ -15,31 +15,26 @@ public class BoardingPassServiceImpl implements BoardingPassService {
     private BoardingPassDao boardingPassDao;
 
     @Override
-    @Transactional
     public List<BoardingPass> listBoardingPass() {
         return boardingPassDao.listBoardingPass();
     }
 
     @Override
-    @Transactional
     public void addBoardingPass(BoardingPass boardingPass) {
         boardingPassDao.addBoardingPass(boardingPass);
     }
 
     @Override
-    @Transactional
     public BoardingPass getBoardingPassById(int id) {
         return boardingPassDao.getBoardingPassById(id);
     }
 
     @Override
-    @Transactional
     public void deleteBoardingPassById(int id) {
         boardingPassDao.deleteBoardingPassById(id);
     }
 
     @Override
-    @Transactional
     public void updateBoardingPass(BoardingPass boardingPass, int id) {
         boardingPassDao.updateBoardingPass(boardingPass, id);
     }

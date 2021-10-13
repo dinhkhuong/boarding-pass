@@ -15,31 +15,26 @@ public class BoardingPassDetailsServiceImpl implements BoardingPassDetailsServic
     private BoardingPassDetailsDao boardingPassDetailsDao;
 
     @Override
-    @Transactional
     public List<BoardingPassDetails> listBoardingPassDetails() {
         return boardingPassDetailsDao.listBoardingPassDetails();
     }
 
     @Override
-    @Transactional
     public void addBoardingPassDetails(BoardingPassDetails boardingPassDetails) {
         boardingPassDetailsDao.addBoardingPassDetails(boardingPassDetails);
     }
 
     @Override
-    @Transactional
     public BoardingPassDetails getBoardingPassDetailsById(int id) {
         return boardingPassDetailsDao.getBoardingPassDetailsById(id);
     }
 
     @Override
-    @Transactional
     public void deleteBoardingPassDetailsById(int id) {
         boardingPassDetailsDao.deleteBoardingPassDetailsById(id);
     }
 
     @Override
-    @Transactional
     public void updateBoardingPassDetails(BoardingPassDetails boardingPassDetails, int id) {
         boardingPassDetailsDao.updateBoardingPassDetails(boardingPassDetails, id);
     }

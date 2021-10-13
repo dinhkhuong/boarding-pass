@@ -23,30 +23,39 @@ public class BoardingPassDaoImpl implements BoardingPassDao{
     @Override
     @Transactional
     public void addBoardingPass(BoardingPass boardingPass){
+        session.beginTransaction();
         session.save(boardingPass);
+        session.getTransaction().commit();
         System.out.println("Boarding pass added.");
     }
 
     @Override
     @Transactional
     public BoardingPass getBoardingPassById(int id){
-        return session.get(BoardingPass.class, id);
+        session.beginTransaction();
+        BoardingPass boardingPass = session.get(BoardingPass.class, id);;
+        session.getTransaction().commit();
+        return boardingPass;
     }
 
     @Override
     @Transactional
     public void deleteBoardingPassById(int id){
+        session.beginTransaction();
         BoardingPass boardingPass = session.get(BoardingPass.class, id);
         session.delete(boardingPass);
+        session.getTransaction().commit();
         System.out.println("Boarding pass deleted.");
     }
 
     @Override
     @Transactional
     public void updateBoardingPass(BoardingPass boardingPass, int id){
+        session.beginTransaction();
         BoardingPass boardingPass1 = session.get(BoardingPass.class, id);
         boardingPass1 = boardingPass;
         session.saveOrUpdate(boardingPass1);
+        session.getTransaction().commit();
         System.out.println("Boarding pass updated.");
     }
 }

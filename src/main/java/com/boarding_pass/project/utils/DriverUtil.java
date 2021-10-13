@@ -33,22 +33,22 @@ public class DriverUtil {
         return sessionFactory.openSession();
     }
 
-    @Bean
-    public User getUser(){
-
-        return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
-    }
-
-    @Bean
-    public BoardingPass getBoardingPass(){
-
-        return new BoardingPass(1);
-    }
-
-    @Bean
-    public BoardingPassDetails getBoardingPassDetails() throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("h:m a");
-
-        return new BoardingPassDetails("California", "North Carolina", formatter.parse("1:45 AM"), formatter.parse("12:0 PM"));
-    }
+//    @Bean
+//    public User getUser(){
+//
+//        return new User("A-Team", "ateam@gmail.com", 1234567890, 'M', 35);
+//    }
+//
+//    @Bean
+//    public BoardingPass getBoardingPass(){
+//
+//        return new BoardingPass(1);
+//    }
+//
+//    @Bean
+//    public BoardingPassDetails getBoardingPassDetails() throws ParseException {
+//        SimpleDateFormat formatter = new SimpleDateFormat("h:m a");
+//
+//        return new BoardingPassDetails("California", "North Carolina", formatter.parse("1:45 AM"), formatter.parse("12:0 PM"));
+//    }
 }
